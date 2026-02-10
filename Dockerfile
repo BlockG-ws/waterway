@@ -10,9 +10,9 @@ RUN curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | gpg --yes --dearmor
 RUN echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/cloudflare-client.list
 RUN apt update && apt install -y cloudflare-warp
 
-RUN curl -L "https://github.com/ginuerzh/gost/releases/download/v2.12.0/gost-linux-${TARGETARCH}-2.12.0.gz" -o gost.gz && gzip -d /app/gost.gz && chmod +x /app/gost
+RUN curl -L "https://github.com/ginuerzh/gost/releases/download/v2.12.0/gost-linux-${TARGETARCH}-2.12.0.tar.gz" -o gost.tar.gz && gzip -xf /app/gost.tar.gz && chmod +x /app/gost
 
-RUN rm /app/gost.gz
+RUN rm /app/gost.tar.gz /app/README.md /app/README_en.md /app/LICENSE
 
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
