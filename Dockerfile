@@ -14,9 +14,6 @@ RUN curl -L https://github.com/ginuerzh/gost/releases/download/v2.12.0/gost_2.12
 
 RUN rm /app/gost.tar.gz /app/README.md /app/README_en.md /app/LICENSE
 
-# To fix unable to register Zero Trust
-RUN useradd -m warp
-
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 
